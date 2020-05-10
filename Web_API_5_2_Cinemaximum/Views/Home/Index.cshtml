@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div id="tut" class="row"></div>
+
+@section ss
+{
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://localhost:63476/api/Default',
+                type: 'GET',
+                success: function (filmlerim) {
+                    $.each(filmlerim, function (index, value) {
+                        $('#tut').append('<div class="col-md-4 col-lg-4"><div class="panel panel-default"><div class="panel-body"><img src="'+value.FilmResimYolu+'" /></div><div class="panel-footer"><div class="row"><div class="col-md-6 col-lg-6"><div><h3>'+value.FilmAdi+'</h3></div><div><strong>'+value.FilmVizyonTarihi+'</strong></div></div><div class="col-md-6 col-lg-6"><a class="btn btn-success pull-right" href="'+value.FilmUrl+'">Film Detayı</a></div></div></div></div></div>')
+                    })
+                }
+            })
+        })
+    </script>
+}
